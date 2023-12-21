@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
 class MainScreen extends StatefulWidget {
@@ -11,6 +12,10 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+    ]);
+
     final centerX = MediaQuery.of(context).size.width / 2 - 50;
     final centerY = MediaQuery.of(context).size.height / 2 - 50;
     return Scaffold(
@@ -28,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
             // 데이터가 잘 들어오는지 찍어보기
             final event = snapshot.data!; // if 문으로 한번 걸렀기 때문에 분명히 데이터가 있으므로 !
             List<double> accelerometerValues = [event.x, event.y];
-            print(accelerometerValues);
+            // print(accelerometerValues);
 
             return Positioned(
               left: centerX,
